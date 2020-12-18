@@ -1,0 +1,44 @@
+.footer{
+  display: flex;
+  max-width: 1440px;
+  margin:  auto;
+  justify-content: space-between;
+  /* padding: 20px; */
+  margin-top: 30px; 
+}
+.footer__title{
+  font-family: Roboto, sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 22px;
+color: #B6BCBF;
+}
+
+.footer__items{
+  list-style: none;
+  display: flex;
+  border: 2px solid red;
+
+ 
+}
+.footer__items-links{
+  display: flex;
+  width: 304px;
+  justify-content: space-between;
+  margin-right: 49px;
+}
+.footer__items_links-title{
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  
+  text-align: center;
+  
+  color: #1A1B22;
+}
+.footer__items-icons{
+  margin-right: 28px;
+}

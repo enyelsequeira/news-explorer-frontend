@@ -1,0 +1,13 @@
+.header__container{
+  background-image: url("../../images/main.png");
+  background-size: cover;
+  background-repeat: no-repeat;  
+  min-height: 576px;
+}
+.header__container-nav {
+  border-bottom: #c4c4c4 solid 1px;
+  justify-content: space-between;
+  box-sizing: border-box;
+  margin: auto;
+  margin-bottom: 80px;
+}
