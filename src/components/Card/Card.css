@@ -1,0 +1,120 @@
+.card{
+  width: 400px;
+  height: 576px;
+  position: relative;
+    border-radius: 10px;
+    margin: 8px 8px;
+    background-color: #fff;
+    list-style: none;
+}
+.card__image{
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 272px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.card__date{
+  color:#B6BCBF;
+  font-family: "Source Sans Pro",  sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 20px 24px 12px;
+}
+.card__title{
+  font-family: "Roboto Slab", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 26px;
+  line-height: 30px;
+  color: #1A1B22;
+  margin: 0 24px;
+  text-overflow: ellipsis;
+}
+.card__text{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  margin: 16px auto;
+  overflow: hidden;
+  word-wrap: break-word;
+  width: 352px;
+  height: 110px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+}
+.card__source{
+  width: 352px;
+  margin: 2px 24px 24px;
+}
+.card__source-link{
+  display: inline-block;
+  font-family: "Roboto Slab", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #B6BCBF;
+  margin: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 100%;
+}
+@media screen and (max-width:540px){
+ .card{
+  max-width: 288px;
+  height: 446px;
+    width: 90%;
+  margin: 8px auto;
+  border: 1px solid red;
+
+}
+.card__image{
+  min-height: 196px;
+}
+.card__text{
+  width: 90%;
+}
+.card__date{
+  width: 90%;
+  margin: 16px auto 10px
+}
+.card__title{
+  width: 90%;
+  margin: 0 auto 14px;
+}
+.card__source{
+  width: 90%;
+  margin: 8px auto;
+}
+}
+@media screen and (max-width:1100px){
+  .card{
+    width: 224px;
+    height: 420px;
+    /* margin: 8px; */
+}
+.card__image{
+  max-height: 150px;
+}
+.card__title{
+  font-size: 22px;
+        line-height: 24px;
+}
+.card__text{
+  -webkit-line-clamp: 4;
+  width: 192px;
+  height: 88px;
+}
+.card__source{
+  width: 192px;
+  margin: 0 16px;
+}
+}

@@ -1,0 +1,35 @@
+.main{
+  border: 1px solid black;
+  background-image: url("../../images/main.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 576px;
+
+}
+
+.main__container{
+  margin-top: 80px;
+  text-align: center;
+}
+.main__container-title{
+  margin: 0 auto;
+font-family: "Roboto Slab", sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 60px;
+line-height: 64px;
+color: #FFFFFF;
+max-width: 608px;
+text-align: left;
+margin-bottom: 32px;
+}
+.main__container-subtitle{
+font-family:" Roboto", sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 24px;
+
+color: #FFFFFF;
+margin-bottom: 88px;
+}

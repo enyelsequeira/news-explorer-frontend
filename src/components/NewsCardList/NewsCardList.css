@@ -1,0 +1,103 @@
+.cards__list{
+  background-color: #f5f6f7;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.cards__list-name{
+  margin: 80px 104px 0;
+  font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  width: 100vw;
+}
+.cards__list-container{
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  flex-wrap: wrap; 
+  align-content: center;
+  margin:64px 104px;
+  width: 90%;
+  padding: 0;
+}
+.cards__list-btn{
+    border-radius: 80px;
+    background-color: #fff;
+    width: 288px;
+    height: 64px;
+    font-family: "Roboto",  sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    margin: 0 auto 80px;
+    border: 0;
+}
+@media screen and (max-width:540px){
+  .cards__list{
+    padding: 0;
+  }
+  .cards__list-container{
+display: flex;
+padding: 0;
+flex-direction: column;
+width: 100%;
+justify-content: center
+  }
+}
+@media screen and (max-width:1100px){
+ .cards__list{
+    padding: 40px;
+  }
+  .cards__list-container{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    flex-wrap: wrap; 
+    padding: 0;
+    margin: 32px auto;
+    width: 100%;
+    justify-content: center;
+    justify-content: space-evenly
+  }
+}
+
+.card__save-button{
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 2;
+  background-color: #fff;
+  background-image: url("../../images/unfilled.png");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.card__save-button:hover{
+  cursor: pointer;
+  background-image: url(../../images/saved.png);
+}
+.card__save-button_saved{
+  background-image: url(../../images/savedFilled.png)
+}
+
+.card__hover-text{
+  background-color: #fff;
+  position: absolute;
+  top: 24px;
+  right: 69px;
+  z-index: 2;
+  width: 182px;
+  height: 40px;
+  border-radius: 10px;
+  border: 0;
+  text-align: center;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14.06px;
+}

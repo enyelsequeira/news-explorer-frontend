@@ -1,7 +1,5 @@
 @import url('./vendor/normalize.css');
 @import url('./vendor/fonts/fonts.css');
 @import url('./components/App/App.css');
-/* body{
-  font-family: 'Roboto', sans-serif;
-  font-weight: 900;
-} */
+@import url("./components/Footer/Footer.css");
+@import url("./components/About/About.css");
