@@ -1,15 +1,23 @@
+/* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import About from '../About/About';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
 import SaveNews from '../SavedNews/SaveNews';
 import NewsCardList from '../NewsCardList/NewsCardList';
+import RegistrationSuccessful from '../FormPopups/RegistrationSuccesful';
+import SignUp from '../FormPopups/form/SignUp';
 
 const App = () => {
-  const [currentUser, setCurrentUser] = useState({});
+  const [signIn, setSignIn] = useState(false);
+  const [signUp, setSignUp] = useState(false);
+  const [registrationComplete, setRegistrationComplete] = useState(false);
+  const [currentUser, setCurrentUser] = useState({ name: 'test' });
+  const [loggedIn, setLoggedIn] = useState(true);
+
   const [cards, setCards] = useState([{
     keyword: 'Nature',
     title: 'Mountains',
@@ -57,20 +65,66 @@ const App = () => {
 
   }]);
 
+  const history = useHistory();
+
+  // handling modals popup
+
+  const openSignIn = () => {
+    setSignUp(false);
+    setRegistrationComplete(false);
+    setSignIn(true);
+  };
+
+  const openSignUp = () => {
+    setSignIn(false);
+    setSignUp(true);
+  };
+  const openSuccess = () => {
+    setRegistrationComplete(true);
+  };
+  const closeAll = (e) => {
+    if (e.target !== e.currentTarget) return;
+    setSignUp(false);
+    setRegistrationComplete(false);
+    setSignIn(false);
+  };
+
+  const signInSubmit = (e) => {
+    e.preventDefault();
+    setLoggedIn(true);
+    setSignIn(false);
+    setCurrentUser({ name: 'UserName' });
+  };
+  const signUpSubmit = (e) => {
+    e.preventDefault();
+    setSignUp(false);
+    openSuccess();
+  };
+  const logout = () => {
+    setCurrentUser({});
+    history.push('/');
+  };
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
         <Switch>
           <Route exact path="/">
-            <Main />
-            <NewsCardList cards={cards} hover="Sign in to save articles" />
-            <About />
-            <Footer />
+            <Main headerClick={loggedIn ? logout : openSignIn} loggedIn={loggedIn} />
+            {/* <NewsCardList cards={cards} hover="Sign in to save articles" /> */}
+            {/* <About /> */}
           </Route>
+
           <Route path="/saved-news">
-            <SaveNews cards={cards} />
+            <SaveNews cards={cards} headerClick={logout} />
           </Route>
+
         </Switch>
+
+        {/* <Footer /> */}
+        {/* <RegistrationSuccessful isOpen={registrationComplete} onClose={closeAll} toggle={openSignIn} />
+        <signIn singInOpen={signIn} onClose={closeAll} handleSubmit={signInSubmit} toggle={openSignUp} />
+        <SignUp singUpOpen={signUp} onClose={closeAll} handleSubmit={signUpSubmit} toggle={openSignIn} /> */}
       </div>
     </CurrentUserContext.Provider>
   );

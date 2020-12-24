@@ -1,50 +1,49 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable indent */
 /* eslint-disable react/jsx-indent */
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Header.css';
-// import test from '../../images/Union.png';
-import testW from '../../images/logout.png';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
+import blackOut from '../../images/blackLog.png';
 
-const isLoggedIn = true;
-// TODO FIGURING OUT HOW TO RENDER THIS
+const SavedHeader = ({ buttonClick }) => {
+  const currentUser = useContext(CurrentUserContext);
+  const [burger, setBurger] = useState(true);
 
-const SavedHeader = () => (
-  <header className="header header_saved">
-    <NavLink
-      className="header__title"
-      to="/"
+  const toggleDropDown = () => {
+    setBurger(!burger);
+  };
 
-    >
-      NewsExplorer
-    </NavLink>
-
-    <div className="header__links">
+  function headerButtonClick() {
+    buttonClick();
+    toggleDropDown();
+  }
+  return (
+    <header className={`header header__saved ${burger ? '' : 'header__mobile'}`}>
       <NavLink
-        activeClassName="header__links-item_selected"
-        className="header__links-item"
+        className={`header__title header__title-saved ${burger ? '' : 'header__title-burger_saved'}`}
         to="/"
       >
-        Home
-
+        NewsExplorer
       </NavLink>
-      {isLoggedIn ? (
-        <>
-          <NavLink activeClassName="header__links-item_selected" className="header__links-item" to="/saved-news">Saved Articles</NavLink>
-          <NavLink className="header__links-item header__links-list_btn" to="/" type="button">
-            Elise
-            <img className="header__links-list-item_img" src={testW} alt="" />
-          </NavLink>
 
-        </>
-      ) : (
-          <li className="header__links-list">
-            <button className="header__links-list_btn" type="button"> Sign in</button>
-          </li>
-        )}
+      <button onClick={toggleDropDown} type="button" className={`header__hamburger ${burger ? 'button__open button__open-saved' : 'button__close'}`} />
 
-    </div>
-  </header>
-);
+      <div id="header__links" className={`header__links ${burger ? 'header__links-hidden' : 'header__links-open'}`}>
+        <NavLink className="header__links-item header__links-item_saved " to="/">Home</NavLink>
+
+        <NavLink activeClassName="header__links-item_selected-saved" className="header__links-item header__links-item_saved" to="/saved-news"> Saved Articles</NavLink>
+
+        <button className="header__links-button header__links-button_saved" type="button" onClick={headerButtonClick}>
+          {currentUser.name}
+          <img className="header__links-button_image" src={blackOut} alt="Logout" />
+        </button>
+      </div>
+
+    </header>
+
+  );
+};
 
 export default SavedHeader;
