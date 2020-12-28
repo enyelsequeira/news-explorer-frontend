@@ -1,9 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable indent */
-/* eslint-disable react/jsx-indent */
 import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import './Header.css';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import blackOut from '../../images/blackLog.png';
 

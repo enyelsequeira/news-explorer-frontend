@@ -1,19 +1,13 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable indent */
-/* eslint-disable react/jsx-indent */
 import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import './Header.css';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 import testW from '../../images/logout.png';
-import burgerMenu from '../../images/menu.png';
-import closeMenu from '../../images/close.png';
 
 const Header = ({ loggedIn, buttonClick }) => {
+  console.log(buttonClick, 8588);
   const currentUser = useContext(CurrentUserContext);
   const [burger, setBurger] = useState(true);
 
@@ -34,10 +28,10 @@ const Header = ({ loggedIn, buttonClick }) => {
     setBurger(!burger);
   };
 
-  function headerButtonClick() {
+  const headerButtonClick = () => {
     buttonClick();
     toggleDropDown();
-  }
+  };
 
   // const test = () => {
   //   const x = document.getElementById('header__links');

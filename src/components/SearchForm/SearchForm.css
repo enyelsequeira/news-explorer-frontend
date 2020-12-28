@@ -38,6 +38,7 @@
 }
 .search__button:hover{
   background: #347EFF;
+  cursor: pointer;
 }
 .search__button:active{
   background: #2A65CC;

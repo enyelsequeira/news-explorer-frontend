@@ -76,6 +76,9 @@
     justify-content: center;
     align-items: center;
 }
+.header__links-button:hover{
+  cursor: pointer; 
+}
 .header__links-button_saved{
   border: 1px solid #1A1B22;
   color: #1A1B22;

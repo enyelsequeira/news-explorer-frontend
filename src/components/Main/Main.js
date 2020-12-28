@@ -3,8 +3,6 @@ import React from 'react';
 import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
 
-import './Main.css';
-
 const Main = ({ headerClick, loggedIn }) => (
   <section className="main">
     <Header buttonClick={headerClick} loggedIn={loggedIn} />

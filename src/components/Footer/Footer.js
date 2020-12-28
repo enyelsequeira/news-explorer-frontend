@@ -1,7 +1,6 @@
 import React from 'react';
 import facebook from '../../images/f.svg';
 import github from '../../images/Vector.svg';
-// import './Footer.css';
 
 const Footer = () => (
   <footer className="footer">

@@ -14,52 +14,17 @@
   justify-self: end;
 }
 .form__title{
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 900;
   font-size: 24px;
   line-height: 28.13px;
   margin:34px 36px 22px;
 
 }
-.form__input-title{
-  color: #2F71E5;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14.5px;
-  margin: 0 36px ;
-}
-.form__input{
-  color: #000000;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 16.94px;
-  border: 0;
-  border-bottom: 1px solid rgba(0, 0, 0, .2);
-  width: 358px;
-  margin: 0 auto;
-}
-.form__input:focus{
-  background-color: white;
-  outline: none;
-}
-.form__input-error{
-  margin: 0 36px;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 14.5px;
-  color: #FF0000;
-  visibility: hidden;
-}
-.form__input-error_visible{
-  visibility: visible;
-}
 .form__button{
   background-color: #2F71E5;
   color: #ffffff;
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
@@ -67,13 +32,14 @@
   width: 360px;
   height: 64px;
   margin: 0 auto;
+  margin-top: 35px;
 }
 .form__button_disabled{
   background-color: #E6E8EB;
   color: #B6BCBF;
 }
 .form__text{
-  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-family: "Inter",  sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 17px;
@@ -83,7 +49,7 @@
   height: 20px;
 }
 .form__link{
-  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-family: "Inter",  sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
@@ -92,6 +58,43 @@
   border: 0;
   padding: 0;
 }
+.form__input-title{
+  color: #2F71E5;
+  font-family: "Inter",  sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.5px;
+  margin: 0 36px ;
+  margin-bottom: 9px;
+}
+.form__input{
+  color: #000000;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.94px;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  width: 358px;
+  margin: 0 auto;
+  margin-bottom: 9px;
+}
+.form__input:active{
+  background-color: white;
+}
+.form__input-error{
+  margin: 0 36px;
+  font-family: "Inter",  sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.5px;
+  color: #FF0000;
+  visibility: hidden;
+}
+.form__input-error_visible{
+  visibility: visible;
+}
+
 @media screen and (max-width: 540px){
   .form{
       width: 100%;

@@ -1,5 +1,5 @@
 import React from 'react';
-import notFound from '../images/not-found_v1.png';
+import notFound from '../../images/not-found_v1.png';
 import './NoResults.css';
 
 function NotFound() {

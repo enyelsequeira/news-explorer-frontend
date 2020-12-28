@@ -8,62 +8,64 @@ import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
 import SaveNews from '../SavedNews/SaveNews';
 import NewsCardList from '../NewsCardList/NewsCardList';
-import RegistrationSuccessful from '../FormPopups/RegistrationSuccesful';
-import SignUp from '../FormPopups/form/SignUp';
+import RegistrationSuccessful from '../PopupWihForm/RegistrationSuccessful';
+import SignInPopout from '../PopupWihForm/Form/SingInPopout';
+import SignUpPopout from '../PopupWihForm/Form/SingUpPopout';
 
 const App = () => {
   const [signIn, setSignIn] = useState(false);
   const [signUp, setSignUp] = useState(false);
   const [registrationComplete, setRegistrationComplete] = useState(false);
   const [currentUser, setCurrentUser] = useState({ name: 'test' });
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const [cards, setCards] = useState([{
     keyword: 'Nature',
-    title: 'Mountains',
-    text: 'Did you see as the world fell down, and how we are surrounded by nature and what happens in there. Have you seen the cats? Have you seen the trees? Have you ever watched the sun rise over the hill?',
+    title: 'Grand Teton Renews Historic Crest Trail',
+    text: 'We all know how good nature can make us feel. We have known it for millennia: the sound of the ocean, the scents of a forest, the way dappled sunlight dances through leaves.',
     date: 'November 12, 2020',
     source: 'Misaka',
     link: 'www.home.com',
-    image: 'https://images.all-free-download.com/images/graphicthumb/beautiful_natural_scenery_04_hd_pictures_166229.jpg',
+    image: 'https://images.unsplash.com/photo-1608754786700-002ea0379062?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
   },
   {
     keyword: 'Animals',
-    title: 'Baby Panda',
-    text: "Tai Shan, whose name means Peaceful Mountain, was the first giant panda born at the Smithsonian's National Zoo in Washington, D.C., to survive infancy. Now 15 years old, Tai Shan lives at the China Conservation and Research Center for the Giant Panda.",
+    title: 'Grand Teton Renews Historic Crest Trail',
+    text: 'We all know how good nature can make us feel. We have known it for millennia: the sound of the ocean, the scents of a forest, the way dappled sunlight dances through leaves..',
     date: 'December 12, 2020',
     source: 'National Geographic',
     link: 'https://www.nationalgeographic.com/photography/2020/12/riveting-pictures-from-the-nat-geo-photo-archives/',
-    image: 'https://tinyjpg.com/images/social/website.jpg',
+    image: 'https://images.unsplash.com/photo-1608671611568-895aaf8ec972?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxM3x8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
   },
   {
     keyword: 'Animals',
-    title: 'Baby Panda',
-    text: "Tai Shan, whose name means Peaceful Mountain, was the first giant panda born at the Smithsonian's National Zoo in Washington, D.C., to survive infancy. Now 15 years old, Tai Shan lives at the China Conservation and Research Center for the Giant Panda.",
+    title: 'Grand Teton Renews Historic Crest Trail',
+    text: 'We all know how good nature can make us feel. We have known it for millennia: the sound of the ocean, the scents of a forest, the way dappled sunlight dances through leaves.',
     date: 'December 12, 2020',
     source: 'National Geographic',
     link: 'https://www.nationalgeographic.com/photography/2020/12/riveting-pictures-from-the-nat-geo-photo-archives/',
-    image: 'https://tinyjpg.com/images/social/website.jpg',
+    image: 'https://images.unsplash.com/photo-1608671611568-895aaf8ec972?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxM3x8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
   },
   {
     keyword: 'Animals',
-    title: 'Baby Panda',
-    text: "Tai Shan, whose name means Peaceful Mountain, was the first giant panda born at the Smithsonian's National Zoo in Washington, D.C., to survive infancy. Now 15 years old, Tai Shan lives at the China Conservation and Research Center for the Giant Panda.",
+    title: 'Everyone Needs a Special  in Nature',
+    text: 'We all know how good nature can make us feel. We have known it for millennia: the sound of the ocean, the scents of a forest, the way dappled sunlight dances through leaves.',
     date: 'December 12, 2020',
     source: 'National Geographic',
     link: 'https://www.nationalgeographic.com/photography/2020/12/riveting-pictures-from-the-nat-geo-photo-archives/',
-    image: 'https://tinyjpg.com/images/social/website.jpg',
+    image: 'https://images.unsplash.com/photo-1608671611568-895aaf8ec972?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxM3x8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
   },
   {
-    keyword: 'Medicine',
-    title: 'Covid-19 Vaccine',
-    text: 'High-ranking White House officials are set to receive some of the first coronavirus vaccines in the United States, according to a White House official and a person familiar. Those vaccinations, which could begin as soon as this week, would come while the vaccine is in extremely limited supply and only generally available to high-risk health care workers.The New York Times first reported on the White House vaccinations.',
-    date: 'December 13, 2020',
-    source: 'CNN',
-    link: 'https://www.cnn.com/2020/12/13/politics/white-house-coronavirus-vaccine/index.html',
-    image: 'https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/1800x1200_virus_3d_render_red_03_other.jpg',
+    keyword: 'Animals',
+    title: 'Nature makes you better',
+    text: 'We all know how good nature can make us feel. We have known it for millennia: the sound of the ocean, the scents of a forest, the way dappled sunlight dances through leaves.',
+    date: 'December 12, 2020',
+    source: 'National Geographic',
+    link: 'https://www.nationalgeographic.com/photography/2020/12/riveting-pictures-from-the-nat-geo-photo-archives/',
+    image: 'https://images.unsplash.com/photo-1608671611568-895aaf8ec972?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxM3x8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+  },
 
-  }]);
+  ]);
 
   const history = useHistory();
 
@@ -101,9 +103,17 @@ const App = () => {
     openSuccess();
   };
   const logout = () => {
+    setLoggedIn(false);
     setCurrentUser({});
     history.push('/');
   };
+  window.addEventListener('keydown', (e) => {
+    if (e.code === 'Escape') {
+      setSignUp(false);
+      setRegistrationComplete(false);
+      setSignIn(false);
+    }
+  });
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -111,8 +121,8 @@ const App = () => {
         <Switch>
           <Route exact path="/">
             <Main headerClick={loggedIn ? logout : openSignIn} loggedIn={loggedIn} />
-            {/* <NewsCardList cards={cards} hover="Sign in to save articles" /> */}
-            {/* <About /> */}
+            <NewsCardList cards={cards} hover="Sign in to save articles" loggedIn={loggedIn} />
+            <About />
           </Route>
 
           <Route path="/saved-news">
@@ -121,10 +131,12 @@ const App = () => {
 
         </Switch>
 
-        {/* <Footer /> */}
-        {/* <RegistrationSuccessful isOpen={registrationComplete} onClose={closeAll} toggle={openSignIn} />
-        <signIn singInOpen={signIn} onClose={closeAll} handleSubmit={signInSubmit} toggle={openSignUp} />
-        <SignUp singUpOpen={signUp} onClose={closeAll} handleSubmit={signUpSubmit} toggle={openSignIn} /> */}
+        <Footer />
+        <RegistrationSuccessful isOpen={registrationComplete} onClose={closeAll} redirectLink={openSignIn} />
+
+        <SignInPopout signInOpen={signIn} onClose={closeAll} handleSubmit={signInSubmit} toggle={openSignUp} />
+
+        <SignUpPopout signUpOpen={signUp} onClose={closeAll} handleSubmit={signUpSubmit} toggle={openSignIn} />
       </div>
     </CurrentUserContext.Provider>
   );
