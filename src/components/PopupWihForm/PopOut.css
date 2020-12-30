@@ -23,7 +23,7 @@
   width: 100vw;
   height: 100vh;
 }
-.popout__active{
+.popout_active{
   visibility: visible;
   opacity: 1;
 }

@@ -70,52 +70,116 @@
   white-space: nowrap;
   max-width: 100%;
 }
-@media screen and (max-width:540px){
- .card{
-  max-width: 288px;
-  height: 446px;
-    width: 90%;
-  margin: 8px auto;
 
+.card__trash-button{
+  border: 0;
+  background-color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 2;
+  background-image: url(../../images/trash.png);
+  background-position: center;
+  background-repeat: no-repeat;
 }
-.card__image{
-  min-height: 196px;
+.card__trash-button:hover{
+  background-image: url(../../images/trashHover.png);
+  cursor: pointer;
 }
-.card__text{
-  width: 90%;
+
+
+
+.card__save-button{
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 2;
+  background-color: #fff;
+  background-image: url("../../images/unfilled.png");
+  background-position: center;
+  background-repeat: no-repeat;
 }
-.card__date{
-  width: 90%;
-  margin: 16px auto 10px
+.card__save-button:hover{
+  cursor: pointer;
+  background-image: url(../../images/saved.png);
 }
-.card__title{
-  width: 90%;
-  margin: 0 auto 14px;
+.card__save-button_saved{
+  background-image: url(../../images/savedFilled.png)
 }
-.card__source{
-  width: 90%;
-  margin: 8px auto;
-}
-}
-@media screen and (max-width:1100px){
-  .card{
-    width: 224px;
-    /* margin: 8px; */
-}
-.card__image{
-  max-height: 150px;
-}
-.card__title{
-  font-size: 22px;
+
+.card__keyword-button{
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
   line-height: 24px;
+  text-align: center;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  border-radius: 10px;
+  height: 40px;
+  padding: 0 22px;
+  text-transform: capitalize;
+  border: 0;
 }
-.card__text{
-  -webkit-line-clamp: 4;
-  width: 192px;
-  height: 88px;
+
+.card__hover-text{
+  background-color: #fff;
+  position: absolute;
+  top: 24px;
+  right: 69px;
+  z-index: 2;
+  width: 182px;
+  height: 40px;
+  border-radius: 10px;
+  border: 0;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14.06px;
 }
-.card__source{
-  width: 192px;
-  margin: 0 16px;
-}
+@media screen and (max-width: 760px) {
+  .card{
+    width: 288px;
+    height: auto;
+    margin: auto;
+    margin-bottom: 10px;
+  }
+  .card__image{
+    z-index: 0;
+    width: 100%;
+    height: 196px;
+ 
+  }
+  .card__date{
+    width: 256px;
+    margin: 16px auto 10px auto;
+    
+  }
+  .card__title{
+    width: 256px;
+    margin: auto;
+  }
+  .card__text{
+    width: 256px;
+    margin: 16px auto 8px auto;
+
+  }
+  
+  .card__source{
+    width: 256px;
+    margin: 8px auto 17px auto;
+
+  }
+  .card__source-link{
+   width: 100%;
+  }
+  
 }

@@ -25,7 +25,7 @@ const SavedHeader = ({ buttonClick }) => {
         NewsExplorer
       </NavLink>
 
-      <button onClick={toggleDropDown} type="button" className={`header__hamburger ${burger ? 'button__open button__open-saved' : 'button__close'}`} />
+      <button onClick={toggleDropDown} type="button" className={`header__hamburger ${burger ? 'header__button header__button-saved' : 'button__close'}`} />
 
       <div id="header__links" className={`header__links ${burger ? 'header__links-hidden' : 'header__links-open'}`}>
         <NavLink className="header__links-item header__links-item_saved " to="/">Home</NavLink>

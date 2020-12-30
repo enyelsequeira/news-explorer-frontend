@@ -11,19 +11,6 @@ const Header = ({ loggedIn, buttonClick }) => {
   const currentUser = useContext(CurrentUserContext);
   const [burger, setBurger] = useState(true);
 
-  // const toggleClass = () => {
-  //   const nav = document.querySelector('.header__links');
-  //   console.log(nav, 858);
-
-  //   if (nav.classList.contains('header__links')) {
-  //     setBurger(false);
-  //     nav.classList.replace('header__links', 'header__links-open');
-  //   } else if (nav.classList.contains('header__links-open')) {
-  //     setBurger(true);
-  //     nav.classList.replace('header__links-open', 'header__links');
-  //   }
-  // };
-
   const toggleDropDown = () => {
     setBurger(!burger);
   };
@@ -33,16 +20,6 @@ const Header = ({ loggedIn, buttonClick }) => {
     toggleDropDown();
   };
 
-  // const test = () => {
-  //   const x = document.getElementById('header__links');
-  //   if (x.style.display === 'block') {
-  //     setBurger(true);
-  //     x.style.display = 'none';
-  //   } else {
-  //     setBurger(false);
-  //     x.style.display = 'block';
-  //   }
-  // };
   return (
     <header className={`header ${burger ? '' : 'header__mobile'}`}>
       <NavLink
@@ -52,7 +29,7 @@ const Header = ({ loggedIn, buttonClick }) => {
         NewsExplorer
       </NavLink>
 
-      <button onClick={toggleDropDown} type="button" className={`header__hamburger ${burger ? 'button__open' : 'button__close'}`} />
+      <button onClick={toggleDropDown} type="button" className={`header__hamburger ${burger ? 'header__button-open' : 'header__button-close'}`} />
 
       <div id="header__links" className={`header__links ${burger ? 'header__links-hidden' : 'header__links-open'}`}>
         <NavLink activeClassName="header__links-item_selected" className="header__links-item" to="/">Home</NavLink>

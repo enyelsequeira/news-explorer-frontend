@@ -169,18 +169,18 @@ box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
     height: 24px;
   }
 
-  .button__open{
+  .header__button-open{
     background-image: url("../../images/menu.png");
     background-position: center;
     background-repeat: no-repeat;
     background-color: rgba(196, 196, 196, 0.01);
   }
-  .button__open-saved{
+  .header__button-open-saved{
     background-image: url("../../images/menublack.png")
     ;
     background-color: #fff;
   }
-  .button__close{
+  .header__button-close{
     background-image: url("../../images/close.png");
     background-position: center;
     background-repeat: no-repeat;
@@ -200,7 +200,7 @@ box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
     margin: 24px auto;
     background: #1A1B22;
     border: 1px solid #fff;
-    font-family: Roboto;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;

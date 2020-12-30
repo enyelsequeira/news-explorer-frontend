@@ -5,7 +5,7 @@ import React from 'react';
 
 const RegistrationSuccessful = ({ isOpen, onClose, redirectLink }) => (
 
-  <section className={`popout ${isOpen ? 'popout__active' : ''}`} onClick={onClose}>
+  <section className={`popout ${isOpen ? 'popout_active' : ''}`} onClick={onClose}>
 
     <button className="popout__close-button" onClick={onClose} type="button" />
     <div className="popout__container">

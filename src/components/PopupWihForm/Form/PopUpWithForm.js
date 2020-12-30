@@ -10,7 +10,7 @@ const PopUpWithForm = ({
   return (
     <section
       onClick={onClose}
-      className={`popout ${isOpen ? 'popout__active' : ''}`}
+      className={`popout ${isOpen ? 'popout_active' : ''}`}
     >
       <button
         className="popout__close-button"
