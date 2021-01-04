@@ -1,7 +1,9 @@
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom';
+import {
+  Redirect, Route, Switch, useHistory,
+} from 'react-router-dom';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import About from '../About/About';
 import Footer from '../Footer/Footer';
@@ -11,6 +13,7 @@ import NewsCardList from '../NewsCardList/NewsCardList';
 import RegistrationSuccessful from '../PopupWihForm/RegistrationSuccessful';
 import SignInPopout from '../PopupWihForm/Form/SingInPopout';
 import SignUpPopout from '../PopupWihForm/Form/SingUpPopout';
+import ProtectedRoute from '../ProtectedRoute';
 
 const App = () => {
   const [signIn, setSignIn] = useState(false);
@@ -125,8 +128,9 @@ const App = () => {
             <About />
           </Route>
 
-          <Route path="/saved-news">
-            <SaveNews cards={cards} headerClick={logout} />
+          <ProtectedRoute path="/saved-news" loggedIn={loggedIn} component={SaveNews} headerClick={logout} singInDirect={openSignIn} />
+          <Route path="/*">
+            <Redirect to="/" />
           </Route>
 
         </Switch>
