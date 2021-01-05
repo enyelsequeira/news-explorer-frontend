@@ -9,6 +9,7 @@ import testW from '../../images/logout.png';
 const Header = ({ loggedIn, buttonClick }) => {
   console.log(buttonClick, 8588);
   const currentUser = useContext(CurrentUserContext);
+  console.log(currentUser, 8999999999);
   const [burger, setBurger] = useState(true);
 
   const toggleDropDown = () => {

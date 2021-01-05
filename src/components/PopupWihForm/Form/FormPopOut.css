@@ -34,6 +34,9 @@
   margin: 0 auto;
   margin-top: 35px;
 }
+.form__button:hover{
+  cursor: pointer;
+}
 .form__button_disabled{
   background-color: #E6E8EB;
   color: #B6BCBF;
@@ -57,6 +60,9 @@
   background: none;
   border: 0;
   padding: 0;
+}
+.form__link{
+  cursor: pointer;
 }
 .form__input-title{
   color: #2F71E5;

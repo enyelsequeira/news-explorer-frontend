@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable react/destructuring-assignment */
 import React, { useState } from 'react';
 import PopoutWithForm from './PopUpWithForm';
@@ -5,35 +6,53 @@ import FormInput from './FormInput';
 
 function SignUpPopout(props) {
   const [isEmailValid, setIsEmailValid] = useState(true);
+  const [email, setEmail] = useState('');
   const [isUserValid, setIsUserValid] = useState(true);
+  const [user, setUser] = useState('');
   const [isPasswordValid, setIsPasswordValid] = useState(true);
+  const [password, setPassword] = useState('');
+
   const [formValid, setFormValid] = useState(true);
-  const allValid = () => {
-    if (isEmailValid && isUserValid && isPasswordValid === true) {
-      setFormValid(true);
-    }
-    setFormValid(false);
+
+  const validateEmail = (email) => {
+    const validation = /\S+@\S+\.\S+/;
+    return validation.test(email);
   };
 
-  const handleEmailChange = () => {
-    setIsEmailValid(true);
-    allValid();
+  const allValid = (e) => {
+    setFormValid(e.target.closest('form').checkValidity());
   };
-  const handlePasswordChange = () => {
-    setIsPasswordValid(true);
-    allValid();
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    setIsEmailValid(validateEmail(email));
+    allValid(e);
   };
-  const handleUserChange = () => {
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    if (password.length > 6) {
+      setIsPasswordValid(true);
+    } else {
+      setIsPasswordValid(false);
+    }
+    allValid(e);
+  };
+  const handleUserChange = (e) => {
+    setUser(e.target.value);
     setIsUserValid(true);
-    allValid();
+    allValid(e);
+  };
+  const signUpSubmit = (e) => {
+    e.preventDefault();
+    props.handleSubmit({ email, password, name: user });
   };
 
   return (
-    <PopoutWithForm isOpen={props.signUpOpen} buttonText="Sign up" onClose={props.onClose} title="Sign up" link="Sign in" toggle={props.toggle} handleSubmit={props.handleSubmit} valid={formValid}>
+    <PopoutWithForm isOpen={props.signUpOpen} buttonText="Sign up" onClose={props.onClose} title="Sign up" link="Sign in" toggle={props.toggle} handleSubmit={signUpSubmit} valid={formValid}>
 
       <FormInput type="email" name="Email" form="sign-up" handleChange={handleEmailChange} errorText="Invalid email address" valid={isEmailValid} placeholderText="Enter email" />
 
-      <FormInput type="password" name="Password" form="sign-up" handleChange={handlePasswordChange} placeholderText="Enter password" />
+      <FormInput type="password" name="Password" form="sign-up" handleChange={handlePasswordChange} placeholderText="Enter password" errorText="Password requires additional characters" valid={isPasswordValid} />
 
       <FormInput type="text" name="Username" form="sign-up" handleChange={handleUserChange} errorText="This username is not available" valid={isUserValid} placeholderText="Enter your username" />
 

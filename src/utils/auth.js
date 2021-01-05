@@ -1,15 +1,16 @@
 /* eslint-disable import/prefer-default-export */
 // authentication to register
 
-export const BASE_URL = 'https://www.news-explorer.tk.students.nomoreparties.site/';
+// export const BASE_URL = 'https://www.news-explorer.tk.students.nomoreparties.site';
+export const BASE_URL = 'http://localhost:3000';
 
-export const register = (password, email, name) => fetch(`${BASE_URL}/signup`, {
+export const register = (email, password, name) => fetch(`${BASE_URL}/signup`, {
   method: 'POST',
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
   },
-  body: JSON.stringify({ password, email, name }),
+  body: JSON.stringify({ email, password, name }),
 }).then((response) => response.json()).then((data) => {
   console.log(data);
   return data;
@@ -27,6 +28,7 @@ export const authorize = (password, email) => fetch(`${BASE_URL}/signin`, {
     localStorage.setItem('jwt', data.token);
     return data;
   }
+  return null;
 });
 
 export const checkToken = (token) => fetch(`${BASE_URL}/users/me`, {
@@ -37,8 +39,5 @@ export const checkToken = (token) => fetch(`${BASE_URL}/users/me`, {
     Authorization: `Bearer ${token}`,
   },
 })
-  .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
-  .then((data) => data)
-  .catch((e) => {
-    console.log(e);
-  });
+  .then((res) => res.json())
+  .then((data) => data);

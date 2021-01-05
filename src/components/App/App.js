@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Redirect, Route, Switch, useHistory,
 } from 'react-router-dom';
@@ -14,63 +14,35 @@ import RegistrationSuccessful from '../PopupWihForm/RegistrationSuccessful';
 import SignInPopout from '../PopupWihForm/Form/SingInPopout';
 import SignUpPopout from '../PopupWihForm/Form/SingUpPopout';
 import ProtectedRoute from '../ProtectedRoute';
+import * as auth from '../../utils/auth';
 
 const App = () => {
+  const [currentUser, setCurrentUser] = useState({});
   const [signIn, setSignIn] = useState(false);
   const [signUp, setSignUp] = useState(false);
   const [registrationComplete, setRegistrationComplete] = useState(false);
-  const [currentUser, setCurrentUser] = useState({ name: 'test' });
   const [loggedIn, setLoggedIn] = useState(false);
-
-  const [cards, setCards] = useState([{
-    keyword: 'Nature',
-    title: 'Grand Teton Renews Historic Crest Trail',
-    text: 'We all know how good nature can make us feel. We have known it for millennia: the sound of the ocean, the scents of a forest, the way dappled sunlight dances through leaves.',
-    date: 'November 12, 2020',
-    source: 'Misaka',
-    link: 'www.home.com',
-    image: 'https://images.unsplash.com/photo-1608754786700-002ea0379062?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-  },
-  {
-    keyword: 'Animals',
-    title: 'Grand Teton Renews Historic Crest Trail',
-    text: 'We all know how good nature can make us feel. We have known it for millennia: the sound of the ocean, the scents of a forest, the way dappled sunlight dances through leaves..',
-    date: 'December 12, 2020',
-    source: 'National Geographic',
-    link: 'https://www.nationalgeographic.com/photography/2020/12/riveting-pictures-from-the-nat-geo-photo-archives/',
-    image: 'https://images.unsplash.com/photo-1608671611568-895aaf8ec972?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxM3x8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-  },
-  {
-    keyword: 'Animals',
-    title: 'Grand Teton Renews Historic Crest Trail',
-    text: 'We all know how good nature can make us feel. We have known it for millennia: the sound of the ocean, the scents of a forest, the way dappled sunlight dances through leaves.',
-    date: 'December 12, 2020',
-    source: 'National Geographic',
-    link: 'https://www.nationalgeographic.com/photography/2020/12/riveting-pictures-from-the-nat-geo-photo-archives/',
-    image: 'https://images.unsplash.com/photo-1608671611568-895aaf8ec972?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxM3x8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-  },
-  {
-    keyword: 'Animals',
-    title: 'Everyone Needs a Special  in Nature',
-    text: 'We all know how good nature can make us feel. We have known it for millennia: the sound of the ocean, the scents of a forest, the way dappled sunlight dances through leaves.',
-    date: 'December 12, 2020',
-    source: 'National Geographic',
-    link: 'https://www.nationalgeographic.com/photography/2020/12/riveting-pictures-from-the-nat-geo-photo-archives/',
-    image: 'https://images.unsplash.com/photo-1608671611568-895aaf8ec972?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxM3x8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-  },
-  {
-    keyword: 'Animals',
-    title: 'Nature makes you better',
-    text: 'We all know how good nature can make us feel. We have known it for millennia: the sound of the ocean, the scents of a forest, the way dappled sunlight dances through leaves.',
-    date: 'December 12, 2020',
-    source: 'National Geographic',
-    link: 'https://www.nationalgeographic.com/photography/2020/12/riveting-pictures-from-the-nat-geo-photo-archives/',
-    image: 'https://images.unsplash.com/photo-1608671611568-895aaf8ec972?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxM3x8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-  },
-
-  ]);
-
+  const [keyword, setKeyWord] = useState('');
+  const [cards, setCards] = useState([]);
+  const [results, setResults] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [noResults, setNoResults] = useState(false);
+  const [resultError, setResultError] = useState(false);
+  const [userToken, setUserToken] = useState('');
   const history = useHistory();
+
+  // logic to get token this
+
+  useEffect(() => {
+    if (localStorage.getItem('jwt')) {
+      const token = localStorage.getItem('jwt');
+      setUserToken(token);
+      auth.checkToken(token).then((res) => {
+        setCurrentUser(res);
+        setLoggedIn(true);
+      }).catch((err) => console.log(err));
+    }
+  }, []);
 
   // handling modals popup
 
@@ -94,20 +66,40 @@ const App = () => {
     setSignIn(false);
   };
 
-  const signInSubmit = (e) => {
-    e.preventDefault();
-    setLoggedIn(true);
-    setSignIn(false);
-    setCurrentUser({ name: 'UserName' });
+  const signInSubmit = ({ password, email }) => {
+    auth.authorize(password, email).then((res) => {
+      console.log(res, 7875);
+      if (res.token) {
+        setUserToken(res.token);
+      }
+    }).then(() => {
+      auth.checkToken(userToken).then((res) => {
+        setCurrentUser(res);
+        setLoggedIn(true);
+      });
+    }).then(() => {
+      setSignIn(false);
+    })
+      .catch((err) => console.log(err));
+    // e.preventDefault();
+    // setLoggedIn(true);
+    // setSignIn(false);
+    // setCurrentUser({ name: 'UserName' });
   };
-  const signUpSubmit = (e) => {
-    e.preventDefault();
-    setSignUp(false);
-    openSuccess();
+  const signUpSubmit = ({ email, password, name }) => {
+    auth.register(email, password, name).then(() => {
+      setSignUp(false);
+      openSuccess();
+    }).catch((err) => console.log(err));
+
+    // e.preventDefault();
+    // setSignUp(false);
+    // openSuccess();
   };
   const logout = () => {
     setLoggedIn(false);
     setCurrentUser({});
+    localStorage.removeItem('jwt');
     history.push('/');
   };
   window.addEventListener('keydown', (e) => {
