@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-shadow */
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
@@ -71,6 +72,7 @@ const App = () => {
 
   const signInSubmit = ({ password, email }) => {
     auth.authorize(password, email).then((res) => {
+      console.log({ res });
       if (res.token) {
         auth.checkToken(res.token).then((res) => {
           console.log('after checking singin', res);

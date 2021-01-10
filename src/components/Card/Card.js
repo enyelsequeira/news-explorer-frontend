@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/control-has-associated-label */
@@ -12,7 +13,7 @@ const Card = (props) => {
   // Accept: 'application/json',
 
   const mainApi = new MainBackend({
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://www.news-explorer.tk.students.nomoreparties.site/',
     headers: {
       Authorization: `Bearer ${userToken}`,
       'content-type': 'application/json',

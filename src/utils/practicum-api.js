@@ -28,7 +28,7 @@ class MainBackend {
     return fetch(`${this._baseUrl}/articles`, {
       headers: this._headers,
     }).then((res) => {
-      console.log(res, 'from api');
+      // console.log(res, 'from api');
       if (res.ok) {
         // console.log(res, 888);
         return res.json();
@@ -46,7 +46,7 @@ class MainBackend {
       headers: this._headers,
       method: 'DELETE',
     }).then((res) => {
-      console.log(res, 'this is from deleteing');
+      // console.log(res, 'this is from deleteing');
       (res.ok ? res.json() : Promise.reject(`error!${res.status}${res.statusText}`));
     });
   }

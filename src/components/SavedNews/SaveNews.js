@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-plusplus */
@@ -14,7 +15,7 @@ const SaveNews = (props) => {
   const savedLength = savedCards.length;
 
   const mainApi = new MainBackend({
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://www.news-explorer.tk.students.nomoreparties.site/',
     headers: {
       // Accept: 'application/json',
       'content-type': 'application/json',
@@ -24,7 +25,7 @@ const SaveNews = (props) => {
 
   const fetchCards = () => {
     mainApi.getSavedArticles().then((res) => {
-      console.log(res, 'coming from 12345');
+      // console.log(res, 'coming from 12345');
       setSavedCards(res.articles);
     }).catch((err) => console.log(err));
   };
@@ -61,7 +62,7 @@ const SaveNews = (props) => {
   };
 
   const handleChange = (cardId) => {
-    console.log(savedCards, 'this is my other id?');
+    // console.log(savedCards, 'this is my other id?');
     const newCards = savedCards.filter((c) => c.id !== cardId);
     setSavedCards(newCards);
     fetchCards();
