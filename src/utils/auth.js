@@ -18,23 +18,27 @@ export const register = (email, password, name) => fetch(`${BASE_URL}/signup`, {
   return data;
 });
 
-export const authorize = (password, email) => fetch(`${BASE_URL}/signin`, {
-  method: 'POST',
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({ password, email }),
-}).then((res) => {
-  console.log(res, 'i am heree');
-}).then((data) => {
-  console.log({ data });
-  if (data.token) {
-    console.log(data);
-    localStorage.setItem('jwt', data.token);
-    return data;
-  }
-});
+export const authorize = (password, email) => {
+  return fetch(`${BASE_URL}/signin`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ password, email }),
+  })
+    .then((response) => {
+      // console.log(response, 'auth');
+      return response.json();
+    })
+    .then((data) => {
+      console.log('[LOGIN]', data);
+      if (data.token) {
+        localStorage.setItem('jwt', data.token);
+        return data;
+      }
+    });
+};
 
 export const checkToken = (token) => fetch(`${BASE_URL}/users/me`, {
   method: 'GET',

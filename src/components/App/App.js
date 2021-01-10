@@ -35,6 +35,7 @@ const App = () => {
   const [noResults, setNoResults] = useState(false);
   const [resultError, setResultError] = useState(false);
   const history = useHistory();
+  const [token, setToken] = useState('');
 
   // logic to get token this
 
@@ -70,9 +71,10 @@ const App = () => {
     setSignIn(false);
   };
 
-  const signInSubmit = ({ password, email }) => {
+  const signInSubmit = (password, email) => {
+    console.log('i am here');
     auth.authorize(password, email).then((res) => {
-      console.log({ res });
+      console.log({ res }, 'i am in app');
       if (res.token) {
         auth.checkToken(res.token).then((res) => {
           console.log('after checking singin', res);

@@ -39,9 +39,7 @@ function SignInPopout({
 
   const handleSignInSubmit = (e) => {
     e.preventDefault();
-    handleSubmit({ email, password });
-    setEmail('');
-    setPassword('');
+    handleSubmit({ password, email });
   };
 
   return (
