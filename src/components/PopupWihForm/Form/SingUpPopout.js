@@ -45,6 +45,9 @@ function SignUpPopout(props) {
   const signUpSubmit = (e) => {
     e.preventDefault();
     props.handleSubmit({ email, password, name: user });
+    // setEmail('');
+    // setPassword('');
+    // setUser('');
   };
 
   return (

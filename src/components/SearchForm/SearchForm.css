@@ -43,6 +43,13 @@
 .search__button:active{
   background: #2A65CC;
 }
+.search__button_disabled{
+  background: #E6E8EB;
+  color: #B6BCBF;
+}
+.search__button_disabled:hover{
+  background-color: #E6E8EB;
+}
 @media screen and (max-width:1100px){
   .search{
       width: 448px;

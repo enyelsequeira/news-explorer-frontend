@@ -1,6 +1,6 @@
 .card{
   width: 400px;
-  height: 576px;
+  /* height: 576px; */
   position: relative;
     border-radius: 10px;
     margin: 8px 8px;
@@ -53,6 +53,10 @@
 .card__source{
   width: 352px;
   margin: 2px 24px 24px;
+}
+.card__link{
+  color: #000;
+  text-decoration: none;
 }
 .card__source-link{
   display: inline-block;
@@ -183,3 +187,29 @@
   }
   
 }
+
+.card__source{
+  display: inline-block;
+  font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #B6BCBF;
+  margin: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 100%;
+}
+.card__source-text{
+  width: 352px;
+  margin: 2px 24px 24px;
+}
+
+
+
+
+

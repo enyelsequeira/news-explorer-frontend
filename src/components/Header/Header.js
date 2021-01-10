@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useContext, useState } from 'react';
@@ -7,9 +8,8 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 import testW from '../../images/logout.png';
 
 const Header = ({ loggedIn, buttonClick }) => {
-  console.log(buttonClick, 8588);
   const currentUser = useContext(CurrentUserContext);
-  console.log(currentUser, 8999999999);
+  console.log({ currentUser });
   const [burger, setBurger] = useState(true);
 
   const toggleDropDown = () => {

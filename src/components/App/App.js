@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
@@ -15,6 +16,10 @@ import SignInPopout from '../PopupWihForm/Form/SingInPopout';
 import SignUpPopout from '../PopupWihForm/Form/SingUpPopout';
 import ProtectedRoute from '../ProtectedRoute';
 import * as auth from '../../utils/auth';
+import newsApi from '../../utils/news-api';
+import NoResults from '../Preloader/NoResults';
+import Preloader from '../Preloader/Preloader';
+import ResultError from '../Preloader/ResultError';
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -28,19 +33,17 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [noResults, setNoResults] = useState(false);
   const [resultError, setResultError] = useState(false);
-  const [userToken, setUserToken] = useState('');
   const history = useHistory();
 
   // logic to get token this
 
   useEffect(() => {
-    if (localStorage.getItem('jwt')) {
-      const token = localStorage.getItem('jwt');
-      setUserToken(token);
-      auth.checkToken(token).then((res) => {
+    const tokenFromStorage = localStorage.getItem('jwt');
+    if (tokenFromStorage) {
+      auth.checkToken(tokenFromStorage).then((res) => {
         setCurrentUser(res);
         setLoggedIn(true);
-      }).catch((err) => console.log(err));
+      }).catch((err) => console.error(err));
     }
   }, []);
 
@@ -68,24 +71,40 @@ const App = () => {
 
   const signInSubmit = ({ password, email }) => {
     auth.authorize(password, email).then((res) => {
-      console.log(res, 7875);
       if (res.token) {
-        setUserToken(res.token);
+        auth.checkToken(res.token).then((res) => {
+          console.log('after checking singin', res);
+          setCurrentUser(res);
+          setLoggedIn(true);
+        });
       }
-    }).then(() => {
-      auth.checkToken(userToken).then((res) => {
-        setCurrentUser(res);
-        setLoggedIn(true);
-      });
     }).then(() => {
       setSignIn(false);
     })
-      .catch((err) => console.log(err));
-    // e.preventDefault();
-    // setLoggedIn(true);
-    // setSignIn(false);
-    // setCurrentUser({ name: 'UserName' });
+      .catch((err) => console.error(err));
   };
+
+  // const signInSubmit = ({ password, email }) => {
+  //   setShouldValidate(false);
+  //   auth.authorize(password, email).then((res) => {
+  //     console.log(res, 7875);
+  //     if (res.token) {
+  //       console.log('after authorize in signin', res.token);
+  //       setUserToken(res.token);
+  //     }
+  //   }).then(() => {
+  //     auth.checkToken(userToken).then((res) => {
+  //       console.log('after checking singin', res);
+  //       setCurrentUser(res);
+  //       setLoggedIn(true);
+  //       setShouldValidate(true);
+  //     });
+  //   }).then(() => {
+  //     setSignIn(false);
+  //   })
+  //     .catch((err) => console.log(err));
+  // };
+
   const signUpSubmit = ({ email, password, name }) => {
     auth.register(email, password, name).then(() => {
       setSignUp(false);
@@ -110,13 +129,48 @@ const App = () => {
     }
   });
 
+  const search = (keyword) => {
+    setKeyWord(keyword);
+    setNoResults(false);
+    setResultError(false);
+    setLoading(true);
+    newsApi.getArticles(keyword).then((res) => {
+      // console.log(res, 'this is only articles');
+      setCards(res);
+      setLoading(false);
+      if (res.length === 0) {
+        setNoResults(true);
+      } else {
+        console.log('do i go here?');
+        setNoResults(false);
+
+        setResults(true);
+      }
+    }).catch((err) => {
+      setLoading(false);
+      setResultError(true);
+      console.log(err);
+    });
+  };
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
         <Switch>
           <Route exact path="/">
-            <Main headerClick={loggedIn ? logout : openSignIn} loggedIn={loggedIn} />
-            <NewsCardList cards={cards} hover="Sign in to save articles" loggedIn={loggedIn} />
+            <Main currentUser={currentUser} headerClick={loggedIn ? logout : openSignIn} loggedIn={loggedIn} search={search} />
+            {
+              results ? <NewsCardList cards={cards} keyword={keyword} hover="Sign in to save articles" loggedIn={loggedIn} /> : ''
+
+            }
+            {
+              noResults ? <NoResults /> : ''
+            }
+            {
+              loading ? <Preloader /> : ''
+            }
+            {resultError ? <ResultError /> : ''}
+
             <About />
           </Route>
 
