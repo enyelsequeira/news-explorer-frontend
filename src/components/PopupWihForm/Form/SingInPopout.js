@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-shadow */
 /* eslint-disable react/destructuring-assignment */
 import React, { useState } from 'react';
@@ -7,19 +8,27 @@ import FormInput from './FormInput';
 function SignInPopout({
   signInOpen, onClose, handleSubmit, toggle,
 }) {
-  const [isEmailValid, setIsEmailValid] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(true);
   const [email, setEmail] = useState('');
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [formValid, setFormValid] = useState(false);
   const [password, setPassword] = useState('');
 
   const validateEmail = (email) => {
-    const validation = /\S+@\S+\.\S+/;
+    const validation = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     return validation.test(email);
   };
 
   const allValid = (e) => {
+    // console.log(e.target.closest('.form').checkValidity());
     setFormValid(e.target.closest('form').checkValidity());
+  };
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    const bool = validateEmail(email);
+    // console.log(bool);
+    setIsEmailValid(bool);
+    allValid(e);
   };
 
   const handlePasswordChange = (e) => {
@@ -27,12 +36,6 @@ function SignInPopout({
     if (password.length > 7) {
       setIsPasswordValid(true);
     }
-
-    allValid(e);
-  };
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-    setIsEmailValid(validateEmail(email));
 
     allValid(e);
   };

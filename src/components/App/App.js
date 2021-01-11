@@ -137,6 +137,7 @@ const App = () => {
     setKeyWord(keyword);
     setNoResults(false);
     setResultError(false);
+    setResults(false);
     setLoading(true);
     newsApi.getArticles(keyword).then((res) => {
       // console.log(res, 'this is only articles');

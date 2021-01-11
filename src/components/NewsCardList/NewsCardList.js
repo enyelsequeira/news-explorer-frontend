@@ -29,10 +29,8 @@ const NewsCardList = (props) => {
       <div className="cards__container">
         <h2 className={`cards__container_title ${props.savedArticles ? 'hidden' : ''}`}>Search Results</h2>
         <ul className="cards__container-list">
-          {
-            props.savedArticles ? props.cards.map((card, index) => (
-              <Card key={index} keyword={card.keyword} title={card.title} text={card.text} date={card.date} source={card.source} image={card.link} savedArticles={props.savedArticles} hover={props.hover} loggedIn={props.loggedIn} cardId={card._id} onDelete={props.onChange} />
-            )) : displayedCards.map((card, index) => (
+          {props.savedArticles ? props.cards.map((card, index) => (<Card key={index} keyword={card.keyword} title={card.title} text={card.text} date={card.date} source={card.source} image={card.link} savedArticles={props.savedArticles} hover={props.hover} loggedIn={props.loggedIn} cardId={card._id} onDelete={props.onChange} />))
+            : displayedCards.map((card, index) => (
               <Card
                 key={index}
                 keyword={props.keyword}
@@ -46,8 +44,7 @@ const NewsCardList = (props) => {
                 loggedIn={props.loggedIn}
                 hover={props.hover}
               />
-            ))
-          }
+            ))}
 
         </ul>
       </div>

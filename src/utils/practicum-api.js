@@ -27,18 +27,8 @@ class MainBackend {
   getSavedArticles() {
     return fetch(`${this._baseUrl}/articles`, {
       headers: this._headers,
-    }).then((res) => {
-      // console.log(res, 'from api');
-      if (res.ok) {
-        // console.log(res, 888);
-        return res.json();
-      }
-      return Promise.reject(`Error! cardlist${res.status}${res.statusText}`);
-
-      // res.ok
-      //   ? res.json()
-      //   :
-    });
+    })
+      .then((res) => (res.ok ? res.json() : Promise.reject(`Error!${res.status}${res.statusText}`)));
   }
 
   removeArticle(articleId) {

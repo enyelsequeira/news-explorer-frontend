@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/jsx-indent */
 import React, { useState } from 'react';
@@ -32,9 +33,10 @@ const SearchForm = (props) => {
     props.onSubmit(keyword);
     setTimeout(enableSearch, 1000);
   }
+
   return (
     <form className="search" onSubmit={submission}>
-      <input placeholder="Enter topic" className="search__input" onChange={onSearchChange} onFocus={() => setValidKeyWord(false)} />
+      <input placeholder="Enter topic" className="search__input" onChange={onSearchChange} onFocus={onSearchChange} />
 
       <span
         id={`${props.name}-error`}
@@ -45,7 +47,7 @@ const SearchForm = (props) => {
         {' '}
 
       </span>
-      <button type="button" className={`button search__button ${validKeyWord ? '' : 'search__button_disabled'}`} disabled>Search</button>
+      <button className={`button search__button ${validKeyWord ? '' : 'search__button_disabled'}`} disabled onClick={submission}>Search</button>
 
     </form>
   );

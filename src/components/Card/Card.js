@@ -11,6 +11,7 @@ const Card = (props) => {
   const [cardId, setCardId] = useState('');
   const userToken = localStorage.getItem('jwt');
   // Accept: 'application/json',
+  // console.log({ myProps: props });
 
   const mainApi = new MainBackend({
     baseUrl: 'https://www.news-explorer.tk.students.nomoreparties.site',
