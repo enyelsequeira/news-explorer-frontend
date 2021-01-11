@@ -15,7 +15,7 @@ const SaveNews = (props) => {
   const savedLength = savedCards.length;
 
   const mainApi = new MainBackend({
-    baseUrl: 'https://www.news-explorer.tk.students.nomoreparties.site/',
+    baseUrl: 'https://www.news-explorer.tk.students.nomoreparties.site',
     headers: {
       // Accept: 'application/json',
       'content-type': 'application/json',

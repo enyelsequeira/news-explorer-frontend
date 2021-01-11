@@ -72,12 +72,12 @@ const App = () => {
   };
 
   const signInSubmit = (password, email) => {
-    console.log('i am here');
+    // console.log('i am here');
     auth.authorize(password, email).then((res) => {
-      console.log({ res }, 'i am in app');
+      // console.log({ res }, 'i am in app');
       if (res.token) {
         auth.checkToken(res.token).then((res) => {
-          console.log('after checking singin', res);
+          // console.log('after checking singin', res);
           setCurrentUser(res);
           setLoggedIn(true);
         });
@@ -145,7 +145,7 @@ const App = () => {
       if (res.length === 0) {
         setNoResults(true);
       } else {
-        console.log('do i go here?');
+        // console.log('do i go here?');
         setNoResults(false);
 
         setResults(true);

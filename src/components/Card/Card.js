@@ -13,7 +13,7 @@ const Card = (props) => {
   // Accept: 'application/json',
 
   const mainApi = new MainBackend({
-    baseUrl: 'https://www.news-explorer.tk.students.nomoreparties.site/',
+    baseUrl: 'https://www.news-explorer.tk.students.nomoreparties.site',
     headers: {
       Authorization: `Bearer ${userToken}`,
       'content-type': 'application/json',
