@@ -1,6 +1,5 @@
 # React Front-End part of News application
 ## more to come =>
-<!-- 
-const isLoggedIn... => show/hide icons
+## Links
+The front-end is deployed [here](https://finalprojectpracticum.netlify.app/).
 
-COMPONENTS => REPRESENTATIONAL => DATA... -->
