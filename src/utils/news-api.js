@@ -32,11 +32,13 @@ class NewsApi {
   }
 
   async getArticles(keyword) {
-    return fetch(`${this._baseUrl}/v2/everything?q=${keyword}&from=${this._getLastWeekDisplay()}&to=${this._getTodayDisplay()}&pageSize=100&apiKey=${APIAUTH}`).then((res) => (res.ok ? res.json() : Promise.reject(`Error!${res.status}${res.statusText}`)).then((res) =>
+    return fetch(`${this._baseUrl}/v2/everything?q=js=${keyword}&from=${this._getLastWeekDisplay()}&to=${this._getTodayDisplay()}&pageSize=100&apiKey=${APIAUTH}`).then((res) => (res.ok ? res.json() : Promise.reject(`Error!${res.status}${res.statusText}`)).then((res) =>
       // console.log(res, 'this is from news');
       res.articles));
   }
 }
+// https://nomoreparties.co/news/v2/everything?q=js=time&from=NaN-NaN-NaN&to=2021-1-13&pageSize
+// everything?q=js&from=NaN-NaN-NaN&to=2021-1-12
 
 const newsApi = new NewsApi('https://nomoreparties.co/news');
 

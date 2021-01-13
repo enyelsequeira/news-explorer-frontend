@@ -163,7 +163,7 @@ const App = () => {
       <div className="App">
         <Switch>
           <Route exact path="/">
-            <Main currentUser={currentUser} headerClick={loggedIn ? logout : openSignIn} loggedIn={loggedIn} search={search} />
+            <Main isLoading={loading} currentUser={currentUser} headerClick={loggedIn ? logout : openSignIn} loggedIn={loggedIn} search={search} />
             {
               results ? <NewsCardList cards={cards} keyword={keyword} hover="Sign in to save articles" loggedIn={loggedIn} /> : ''
 
