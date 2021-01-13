@@ -34,6 +34,7 @@ const SearchForm = (props) => {
         className="search__input"
         onChange={({ target }) => setKeyword(target.value)}
         disabled={props.isLoading}
+
       />
       { !valid && (
         <span

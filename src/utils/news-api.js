@@ -37,6 +37,8 @@ class NewsApi {
       res.articles));
   }
 }
+
+// ? these are the same i dont know what you want
 // https://nomoreparties.co/news/v2/everything?q=js=time&from=NaN-NaN-NaN&to=2021-1-13&pageSize
 // everything?q=js&from=NaN-NaN-NaN&to=2021-1-12
 
