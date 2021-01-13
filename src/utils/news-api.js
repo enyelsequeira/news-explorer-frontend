@@ -10,7 +10,7 @@ class NewsApi {
   }
 
   _getLastWeek() {
-    this._lastWeek = new Date(new Date().getTime - WEEKSAGO);
+    this._lastWeek = new Date(new Date().getTime() - WEEKSAGO);
     return this._lastWeek;
   }
 
