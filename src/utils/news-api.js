@@ -32,9 +32,9 @@ class NewsApi {
   }
 
   async getArticles(keyword) {
-    return fetch(`${this._baseUrl}/v2/everything?q=js=${keyword}&from=${this._getLastWeekDisplay()}&to=${this._getTodayDisplay()}&pageSize=100&apiKey=${APIAUTH}`).then((res) => (res.ok ? res.json() : Promise.reject(`Error!${res.status}${res.statusText}`)).then((res) =>
-      // console.log(res, 'this is from news');
-      res.articles));
+    return fetch(`${this._baseUrl}/v2/everything?q=${keyword}&from=${this._getLastWeekDisplay()}&to=${this._getTodayDisplay()}&pageSize=100&apiKey=${APIAUTH}`)
+      .then((res) => (res.ok ? res.json() : Promise.reject(`Error!${res.status}${res.statusText}`)))
+      .then((res) => res.articles);
   }
 }
 
