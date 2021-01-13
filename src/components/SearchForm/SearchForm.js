@@ -11,7 +11,7 @@ const SearchForm = (props) => {
   const inputRef = useRef();
 
   useEffect(() => {
-    if (keyword.length > 0) {
+    if (keyword.trim().length > 0) {
       setValid(true);
     } else {
       setValid(false);
