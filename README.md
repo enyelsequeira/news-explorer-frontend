@@ -77,5 +77,5 @@ To create a functional news search app, using up to date technologies and best p
 4. Start breaking the code and have fun 
 
 ## Live 
-The front-end is deployed [HERE](https://newsexplorer.netlify.app/).
+The front-end is deployed [HERE](https://news-explorer-frontend.vercel.app/).
 
