@@ -1,0 +1,123 @@
+.form{
+  background-color: #ffffff;
+  border-radius: 16px;
+  max-height: 457px;
+  width: 430px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  z-index: 10;
+  position: relative;
+  grid-column: 2;
+  grid-row: 2;
+  align-self: stretch;
+  justify-self: end;
+}
+.form__title{
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 28.13px;
+  margin:34px 36px 22px;
+
+}
+.form__button{
+  background-color: #2F71E5;
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  border-radius: 100px;
+  width: 360px;
+  height: 64px;
+  margin: 0 auto;
+  margin-top: 35px;
+}
+.form__button:hover{
+  cursor: pointer;
+}
+.form__button_disabled{
+  background-color: #E6E8EB;
+  color: #B6BCBF;
+}
+.form__text{
+  font-family: "Inter",  sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  align-self: center;
+  text-align: center;
+  width: 226px;
+  height: 20px;
+}
+.form__link{
+  font-family: "Inter",  sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #2F71E5;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+.form__link{
+  cursor: pointer;
+}
+.form__input-title{
+  color: #2F71E5;
+  font-family: "Inter",  sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.5px;
+  margin: 0 36px ;
+  margin-bottom: 9px;
+}
+.form__input{
+  color: #000000;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.94px;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  width: 358px;
+  margin: 0 auto;
+  margin-bottom: 9px;
+}
+.form__input:active{
+  background-color: white;
+}
+.form__input-error{
+  margin: 0 36px;
+  font-family: "Inter",  sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.5px;
+  color: #FF0000;
+  visibility: hidden;
+}
+.form__input-error_visible{
+  visibility: visible;
+}
+
+@media screen and (max-width: 540px){
+  .form{
+      width: 100%;
+      height: 100%;
+      justify-content: start;
+  }
+  .form__title{
+      margin: 16px 17px 17px;
+  }
+  .form__input-title{
+      margin: 0 16px 8px;
+  }
+  .form__input{
+      width: 90%;
+      margin-bottom: 23px;
+  }
+  .form__button{
+      width: 90%;
+  }
+}
